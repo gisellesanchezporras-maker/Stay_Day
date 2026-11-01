@@ -1,0 +1,3686 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STAY DAY 🧸</title>
+
+<!-- Tipografías -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+:root{
+    --bg:#F7F3F0;
+    --card:#FFFDFC;
+    --text:#303035;
+    --muted:#858189;
+    --border:#E7E0DD;
+
+    --lavender:#C8B9DE;
+    --pink:#F3BFCB;
+    --peach:#E8B59B;
+    --blue:#AFCBE3;
+    --mint:#B8D8C0;
+    --butter:#F2D98D;
+    --cream:#F4E3A2;
+
+    --shadow:0 8px 25px rgba(60,50,60,.08);
+    --radius:24px;
+}
+
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+}
+
+body{
+    font-family:'Nunito',sans-serif;
+    background:var(--bg);
+    color:var(--text);
+    min-height:100vh;
+}
+
+button,
+input,
+select,
+textarea{
+    font-family:inherit;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+}
+
+h1,h2,h3,h4,
+.logo,
+.nav-item,
+.btn,
+.stat-number,
+.level-number{
+    font-family:'Fredoka',sans-serif;
+}
+
+/* =========================
+   AUTH
+========================= */
+
+.auth-screen{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:25px;
+    background:
+        radial-gradient(circle at 15% 15%,rgba(243,191,203,.45),transparent 28%),
+        radial-gradient(circle at 85% 20%,rgba(200,185,222,.5),transparent 30%),
+        radial-gradient(circle at 50% 100%,rgba(184,216,192,.4),transparent 35%),
+        var(--bg);
+}
+
+.auth-box{
+    width:100%;
+    max-width:440px;
+    background:rgba(255,253,252,.92);
+    border:2px solid rgba(255,255,255,.8);
+    border-radius:35px;
+    padding:35px;
+    box-shadow:0 20px 60px rgba(80,65,80,.13);
+}
+
+.auth-logo{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.auth-logo .bear{
+    font-size:55px;
+    margin-bottom:5px;
+}
+
+.auth-logo h1{
+    font-size:42px;
+    letter-spacing:-1px;
+}
+
+.auth-logo p{
+    color:var(--muted);
+    font-weight:700;
+    margin-top:4px;
+}
+
+.auth-tabs{
+    display:flex;
+    background:#F4F0F2;
+    border-radius:15px;
+    padding:5px;
+    margin-bottom:22px;
+}
+
+.auth-tabs button{
+    flex:1;
+    padding:11px;
+    border-radius:11px;
+    background:transparent;
+    color:var(--muted);
+    font-weight:800;
+}
+
+.auth-tabs button.active{
+    background:white;
+    color:var(--text);
+    box-shadow:0 3px 10px rgba(0,0,0,.05);
+}
+
+.form-group{
+    margin-bottom:16px;
+}
+
+.form-group label{
+    display:block;
+    font-weight:800;
+    margin-bottom:7px;
+    font-size:14px;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea{
+    width:100%;
+    border:2px solid var(--border);
+    background:white;
+    border-radius:15px;
+    padding:13px 15px;
+    outline:none;
+    color:var(--text);
+    transition:.2s;
+}
+
+.form-group textarea{
+    resize:vertical;
+    min-height:90px;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus{
+    border-color:var(--lavender);
+}
+
+.primary-btn{
+    width:100%;
+    padding:14px;
+    border-radius:16px;
+    background:var(--lavender);
+    color:#40364A;
+    font-family:'Fredoka',sans-serif;
+    font-size:17px;
+    font-weight:600;
+    transition:.2s;
+}
+
+.primary-btn:hover{
+    transform:translateY(-2px);
+    box-shadow:0 8px 18px rgba(200,185,222,.45);
+}
+
+.auth-note{
+    text-align:center;
+    margin-top:15px;
+    color:var(--muted);
+    font-size:12px;
+}
+
+/* =========================
+   APP
+========================= */
+
+.app{
+    display:none;
+    min-height:100vh;
+}
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    bottom:0;
+    width:245px;
+    padding:25px 17px;
+    background:rgba(255,253,252,.88);
+    border-right:1px solid var(--border);
+    z-index:20;
+}
+
+.logo{
+    text-align:center;
+    font-size:29px;
+    margin-bottom:5px;
+}
+
+.logo-sub{
+    text-align:center;
+    color:var(--muted);
+    font-size:11px;
+    font-weight:800;
+    margin-bottom:28px;
+    letter-spacing:1px;
+}
+
+.skzoo-mini{
+    text-align:center;
+    font-size:38px;
+    background:linear-gradient(135deg,var(--pink),var(--lavender));
+    padding:14px;
+    border-radius:22px;
+    margin-bottom:22px;
+}
+
+.nav{
+    display:flex;
+    flex-direction:column;
+    gap:7px;
+}
+
+.nav-item{
+    padding:12px 14px;
+    border-radius:15px;
+    background:transparent;
+    text-align:left;
+    font-size:16px;
+    color:var(--muted);
+    transition:.2s;
+}
+
+.nav-item:hover{
+    background:#F5F0F3;
+    color:var(--text);
+}
+
+.nav-item.active{
+    background:var(--lavender);
+    color:#41384C;
+}
+
+.sidebar-bottom{
+    position:absolute;
+    left:17px;
+    right:17px;
+    bottom:20px;
+}
+
+.logout-btn{
+    width:100%;
+    padding:11px;
+    border-radius:14px;
+    background:#F5EEF1;
+    color:#75666D;
+    font-weight:800;
+}
+
+.main{
+    margin-left:245px;
+    padding:28px;
+    max-width:1500px;
+}
+
+.mobile-header{
+    display:none;
+}
+
+/* =========================
+   TOPBAR
+========================= */
+
+.topbar{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:25px;
+}
+
+.page-title{
+    font-size:32px;
+}
+
+.page-subtitle{
+    color:var(--muted);
+    font-weight:700;
+    margin-top:2px;
+}
+
+.profile-chip{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:var(--card);
+    border:1px solid var(--border);
+    padding:8px 13px 8px 8px;
+    border-radius:18px;
+    box-shadow:var(--shadow);
+}
+
+.profile-chip .avatar{
+    width:37px;
+    height:37px;
+    display:grid;
+    place-items:center;
+    border-radius:13px;
+    background:var(--pink);
+    font-size:22px;
+}
+
+.profile-chip strong{
+    font-family:'Fredoka';
+}
+
+/* =========================
+   CARDS
+========================= */
+
+.card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow);
+}
+
+.section-title{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:15px;
+}
+
+.section-title h2{
+    font-size:21px;
+}
+
+.small-btn{
+    padding:8px 12px;
+    border-radius:11px;
+    background:#F3EEF2;
+    color:var(--text);
+    font-weight:800;
+    font-size:12px;
+}
+
+/* =========================
+   HOME
+========================= */
+
+.welcome{
+    display:grid;
+    grid-template-columns:1.6fr 1fr;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.welcome-card{
+    background:
+        radial-gradient(circle at 90% 10%,rgba(255,255,255,.7),transparent 25%),
+        linear-gradient(135deg,#F3BFCB,#C8B9DE);
+    min-height:220px;
+    position:relative;
+    overflow:hidden;
+}
+
+.welcome-card:after{
+    content:"";
+    position:absolute;
+    width:180px;
+    height:180px;
+    border-radius:50%;
+    background:rgba(255,255,255,.2);
+    right:-50px;
+    bottom:-70px;
+}
+
+.welcome-content{
+    position:relative;
+    z-index:2;
+}
+
+.welcome-card h2{
+    font-size:31px;
+    max-width:500px;
+}
+
+.welcome-card p{
+    margin-top:7px;
+    font-weight:700;
+    color:#625965;
+}
+
+.level-box{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-top:28px;
+}
+
+.level-number{
+    width:62px;
+    height:62px;
+    border-radius:20px;
+    background:rgba(255,255,255,.65);
+    display:grid;
+    place-items:center;
+    font-size:28px;
+}
+
+.level-info{
+    flex:1;
+}
+
+.level-info strong{
+    font-family:'Fredoka';
+    font-size:16px;
+}
+
+.xp-bar{
+    width:100%;
+    height:10px;
+    border-radius:10px;
+    background:rgba(255,255,255,.5);
+    overflow:hidden;
+    margin-top:7px;
+}
+
+.xp-progress{
+    height:100%;
+    width:0%;
+    background:white;
+    border-radius:10px;
+    transition:.4s;
+}
+
+.companion-card{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+}
+
+.companion-card .big-skzoo{
+    font-size:75px;
+    margin:8px 0;
+}
+
+.companion-card h3{
+    font-size:22px;
+}
+
+.companion-card p{
+    color:var(--muted);
+    font-weight:700;
+    font-size:13px;
+}
+
+/* =========================
+   STATS
+========================= */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.stat-card{
+    display:flex;
+    align-items:center;
+    gap:13px;
+}
+
+.stat-icon{
+    width:50px;
+    height:50px;
+    display:grid;
+    place-items:center;
+    border-radius:16px;
+    font-size:24px;
+}
+
+.stat-card:nth-child(1) .stat-icon{
+    background:var(--pink);
+}
+
+.stat-card:nth-child(2) .stat-icon{
+    background:var(--mint);
+}
+
+.stat-card:nth-child(3) .stat-icon{
+    background:var(--blue);
+}
+
+.stat-card:nth-child(4) .stat-icon{
+    background:var(--butter);
+}
+
+.stat-number{
+    font-size:23px;
+}
+
+.stat-label{
+    font-size:12px;
+    color:var(--muted);
+    font-weight:800;
+}
+
+/* =========================
+   HOME GRID
+========================= */
+
+.home-grid{
+    display:grid;
+    grid-template-columns:1.2fr .8fr;
+    gap:20px;
+}
+
+.task-list{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+}
+
+.task{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    padding:11px;
+    background:#FAF7F7;
+    border-radius:14px;
+}
+
+.task-check{
+    width:23px;
+    height:23px;
+    border-radius:8px;
+    border:2px solid var(--lavender);
+    background:white;
+    display:grid;
+    place-items:center;
+    cursor:pointer;
+}
+
+.task.completed{
+    opacity:.6;
+}
+
+.task.completed .task-check{
+    background:var(--lavender);
+}
+
+.task.completed .task-title{
+    text-decoration:line-through;
+}
+
+.task-title{
+    font-weight:800;
+    flex:1;
+}
+
+.priority{
+    width:8px;
+    height:8px;
+    border-radius:50%;
+}
+
+.priority.high{
+    background:#E8A0A8;
+}
+
+.priority.medium{
+    background:var(--butter);
+}
+
+.priority.low{
+    background:var(--mint);
+}
+
+.mood-today{
+    text-align:center;
+    padding:20px 10px;
+}
+
+.mood-face{
+    font-size:58px;
+}
+
+.mood-name{
+    font-family:'Fredoka';
+    font-size:22px;
+    margin-top:7px;
+}
+
+.mood-empty{
+    color:var(--muted);
+    font-weight:700;
+}
+
+/* =========================
+   PAGES
+========================= */
+
+.page{
+    display:none;
+}
+
+.page.active{
+    display:block;
+}
+
+/* =========================
+   CALENDAR
+========================= */
+
+.calendar-layout{
+    display:grid;
+    grid-template-columns:1fr 300px;
+    gap:20px;
+}
+
+.calendar-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:18px;
+}
+
+.calendar-header h2{
+    font-size:24px;
+}
+
+.month-buttons{
+    display:flex;
+    gap:7px;
+}
+
+.month-buttons button{
+    width:34px;
+    height:34px;
+    border-radius:10px;
+    background:#F3EEF2;
+}
+
+.weekdays,
+.calendar-days{
+    display:grid;
+    grid-template-columns:repeat(7,1fr);
+    gap:5px;
+}
+
+.weekdays div{
+    text-align:center;
+    font-size:11px;
+    font-weight:900;
+    color:var(--muted);
+    padding:6px;
+}
+
+.day{
+    min-height:78px;
+    padding:8px;
+    background:#FAF8F7;
+    border-radius:12px;
+    border:1px solid transparent;
+    cursor:pointer;
+}
+
+.day:hover{
+    border-color:var(--lavender);
+}
+
+.day.today{
+    background:#F0EAF6;
+    border-color:var(--lavender);
+}
+
+.day.other{
+    opacity:.35;
+}
+
+.day-number{
+    font-family:'Fredoka';
+    font-size:14px;
+}
+
+.day-task{
+    margin-top:5px;
+    padding:3px 5px;
+    border-radius:6px;
+    font-size:9px;
+    font-weight:800;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    background:var(--pink);
+}
+
+/* =========================
+   HABITS
+========================= */
+
+.habit-list{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+}
+
+.habit-card{
+    position:relative;
+    overflow:hidden;
+}
+
+.habit-top{
+    display:flex;
+    justify-content:space-between;
+    align-items:flex-start;
+}
+
+.habit-icon{
+    width:50px;
+    height:50px;
+    border-radius:16px;
+    display:grid;
+    place-items:center;
+    font-size:24px;
+}
+
+.habit-card:nth-child(4n+1) .habit-icon{
+    background:var(--mint);
+}
+
+.habit-card:nth-child(4n+2) .habit-icon{
+    background:var(--pink);
+}
+
+.habit-card:nth-child(4n+3) .habit-icon{
+    background:var(--blue);
+}
+
+.habit-card:nth-child(4n+4) .habit-icon{
+    background:var(--butter);
+}
+
+.habit-name{
+    font-family:'Fredoka';
+    font-size:19px;
+    margin-top:13px;
+}
+
+.habit-streak{
+    color:var(--muted);
+    font-size:12px;
+    font-weight:800;
+    margin-top:3px;
+}
+
+.habit-days{
+    display:flex;
+    gap:6px;
+    margin-top:17px;
+}
+
+.habit-day{
+    width:29px;
+    height:29px;
+    border-radius:50%;
+    background:#F0ECEB;
+    display:grid;
+    place-items:center;
+    font-size:9px;
+    font-weight:900;
+    color:var(--muted);
+}
+
+.habit-day.done{
+    background:var(--mint);
+    color:#38523F;
+}
+
+.habit-complete{
+    margin-top:15px;
+    width:100%;
+    padding:10px;
+    border-radius:12px;
+    background:#F4F0F1;
+    font-weight:900;
+}
+
+.habit-complete.done{
+    background:var(--mint);
+}
+
+/* =========================
+   MONEY
+========================= */
+
+.money-summary{
+    display:grid;
+    grid-template-columns:1.2fr 1fr 1fr;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.balance-card{
+    background:linear-gradient(135deg,#AFCBE3,#D7E4EF);
+}
+
+.balance-card .amount{
+    font-family:'Fredoka';
+    font-size:35px;
+    margin-top:10px;
+}
+
+.money-mini{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.money-mini-icon{
+    width:48px;
+    height:48px;
+    border-radius:15px;
+    display:grid;
+    place-items:center;
+    font-size:22px;
+}
+
+.income .money-mini-icon{
+    background:var(--mint);
+}
+
+.expense .money-mini-icon{
+    background:var(--pink);
+}
+
+.transaction-list{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.transaction{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:12px;
+    border-radius:15px;
+    background:#FAF8F7;
+}
+
+.transaction-icon{
+    width:43px;
+    height:43px;
+    border-radius:14px;
+    display:grid;
+    place-items:center;
+    background:#F1ECEE;
+}
+
+.transaction-info{
+    flex:1;
+}
+
+.transaction-info strong{
+    display:block;
+    font-family:'Fredoka';
+}
+
+.transaction-info small{
+    color:var(--muted);
+    font-weight:700;
+}
+
+.transaction-amount{
+    font-family:'Fredoka';
+}
+
+.transaction-amount.income{
+    color:#568466;
+}
+
+.transaction-amount.expense{
+    color:#B66C78;
+}
+
+/* =========================
+   MOOD
+========================= */
+
+.mood-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:20px;
+}
+
+.mood-options{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:10px;
+}
+
+.mood-option{
+    padding:13px 7px;
+    border:2px solid var(--border);
+    background:white;
+    border-radius:17px;
+    text-align:center;
+    transition:.2s;
+}
+
+.mood-option:hover{
+    transform:translateY(-2px);
+}
+
+.mood-option.selected{
+    border-color:var(--lavender);
+    background:#F3EEF8;
+}
+
+.mood-option .emoji{
+    display:block;
+    font-size:30px;
+    margin-bottom:5px;
+}
+
+.mood-option span:last-child{
+    font-size:11px;
+    font-weight:900;
+}
+
+.mood-history{
+    display:flex;
+    flex-direction:column;
+    gap:9px;
+    max-height:400px;
+    overflow:auto;
+}
+
+.mood-history-item{
+    display:flex;
+    align-items:center;
+    gap:10px;
+    background:#FAF8F7;
+    padding:11px;
+    border-radius:13px;
+}
+
+.mood-history-item .emoji{
+    font-size:27px;
+}
+
+.mood-history-item div:nth-child(2){
+    flex:1;
+}
+
+.mood-history-item strong{
+    font-family:'Fredoka';
+}
+
+.mood-history-item small{
+    display:block;
+    color:var(--muted);
+    font-weight:700;
+}
+
+.mood-note{
+    margin-top:10px;
+}
+
+/* =========================
+   PROFILE
+========================= */
+
+.profile-layout{
+    display:grid;
+    grid-template-columns:300px 1fr;
+    gap:20px;
+}
+
+.profile-card{
+    text-align:center;
+}
+
+.profile-avatar{
+    width:110px;
+    height:110px;
+    margin:0 auto 15px;
+    display:grid;
+    place-items:center;
+    font-size:70px;
+    background:linear-gradient(135deg,var(--pink),var(--lavender));
+    border-radius:35px;
+}
+
+.profile-card h2{
+    font-size:27px;
+}
+
+.profile-card p{
+    color:var(--muted);
+    font-weight:700;
+}
+
+.skzoo-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+}
+
+.skzoo-option{
+    border:2px solid var(--border);
+    background:#FFF;
+    border-radius:20px;
+    padding:15px 8px;
+    text-align:center;
+    transition:.2s;
+}
+
+.skzoo-option:hover{
+    transform:translateY(-3px);
+}
+
+.skzoo-option.selected{
+    border-color:var(--lavender);
+    background:#F4EFF8;
+}
+
+.skzoo-option .emoji{
+    font-size:42px;
+    display:block;
+}
+
+.skzoo-option strong{
+    display:block;
+    font-family:'Fredoka';
+    font-size:13px;
+    margin-top:5px;
+}
+
+/* =========================
+   MODAL
+========================= */
+
+.modal{
+    position:fixed;
+    inset:0;
+    background:rgba(45,40,45,.35);
+    backdrop-filter:blur(5px);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    z-index:100;
+}
+
+.modal.show{
+    display:flex;
+}
+
+.modal-box{
+    width:100%;
+    max-width:480px;
+    max-height:90vh;
+    overflow:auto;
+    background:var(--card);
+    border-radius:27px;
+    padding:24px;
+    box-shadow:0 25px 70px rgba(0,0,0,.2);
+}
+
+.modal-header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+.close-modal{
+    width:35px;
+    height:35px;
+    border-radius:12px;
+    background:#F2ECEF;
+    font-size:18px;
+}
+
+/* =========================
+   TOAST
+========================= */
+
+.toast{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#303035;
+    color:white;
+    padding:13px 17px;
+    border-radius:15px;
+    font-weight:800;
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+    transform:translateY(100px);
+    opacity:0;
+    transition:.3s;
+    z-index:200;
+}
+
+.toast.show{
+    transform:translateY(0);
+    opacity:1;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media(max-width:1000px){
+
+    .sidebar{
+        width:205px;
+    }
+
+    .main{
+        margin-left:205px;
+    }
+
+    .stats{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .welcome,
+    .home-grid,
+    .calendar-layout,
+    .mood-grid,
+    .profile-layout{
+        grid-template-columns:1fr;
+    }
+
+    .money-summary{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:700px){
+
+    .sidebar{
+        display:none;
+    }
+
+    .main{
+        margin-left:0;
+        padding:17px;
+        padding-bottom:90px;
+    }
+
+    .mobile-header{
+        display:flex;
+        justify-content:space-between;
+        align-items:center;
+        margin-bottom:20px;
+    }
+
+    .mobile-header h1{
+        font-size:25px;
+    }
+
+    .mobile-header span{
+        font-size:28px;
+    }
+
+    .topbar{
+        margin-bottom:18px;
+    }
+
+    .page-title{
+        font-size:27px;
+    }
+
+    .profile-chip{
+        display:none;
+    }
+
+    .stats{
+        grid-template-columns:1fr 1fr;
+    }
+
+    .habit-list{
+        grid-template-columns:1fr;
+    }
+
+    .mood-options{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .skzoo-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .day{
+        min-height:58px;
+        padding:5px;
+    }
+
+    .day-task{
+        display:none;
+    }
+
+    .bottom-nav{
+        display:flex;
+        position:fixed;
+        bottom:0;
+        left:0;
+        right:0;
+        height:72px;
+        background:rgba(255,253,252,.95);
+        backdrop-filter:blur(10px);
+        border-top:1px solid var(--border);
+        z-index:50;
+        justify-content:space-around;
+        padding:7px;
+    }
+
+    .bottom-nav button{
+        background:transparent;
+        color:var(--muted);
+        font-family:'Fredoka';
+        font-size:10px;
+        display:flex;
+        flex-direction:column;
+        align-items:center;
+        gap:2px;
+        min-width:55px;
+    }
+
+    .bottom-nav button span{
+        font-size:22px;
+    }
+
+    .bottom-nav button.active{
+        color:#77638F;
+    }
+}
+
+@media(min-width:701px){
+    .bottom-nav{
+        display:none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- =========================
+     AUTH SCREEN
+========================= -->
+
+<section class="auth-screen" id="authScreen">
+
+    <div class="auth-box">
+
+        <div class="auth-logo">
+            <div class="bear">🧸</div>
+            <h1>STAY DAY</h1>
+            <p>your little everyday universe ✦</p>
+        </div>
+
+        <div class="auth-tabs">
+            <button id="loginTab" class="active" onclick="switchAuth('login')">
+                Iniciar sesión
+            </button>
+
+            <button id="registerTab" onclick="switchAuth('register')">
+                Registrarme
+            </button>
+        </div>
+
+        <!-- LOGIN -->
+
+        <form id="loginForm">
+
+            <div class="form-group">
+                <label>Usuario</label>
+                <input id="loginUser" required placeholder="Tu usuario">
+            </div>
+
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input id="loginPassword" type="password" required placeholder="Tu contraseña">
+            </div>
+
+            <button class="primary-btn">
+                Entrar a STAY DAY ✨
+            </button>
+
+        </form>
+
+        <!-- REGISTER -->
+
+        <form id="registerForm" style="display:none">
+
+            <div class="form-group">
+                <label>¿Cómo te llamas?</label>
+                <input id="registerName" required placeholder="Tu nombre">
+            </div>
+
+            <div class="form-group">
+                <label>Usuario</label>
+                <input id="registerUser" required placeholder="Ej. stay123">
+            </div>
+
+            <div class="form-group">
+                <label>Contraseña</label>
+                <input id="registerPassword" type="password" required placeholder="Crea una contraseña">
+            </div>
+
+            <div class="form-group">
+                <label>Tu SKZOO favorito</label>
+
+                <select id="registerSkzoo">
+
+                    <option value="🐺">🐺 Wolf Chan</option>
+                    <option value="🐰">🐰 Leebit</option>
+                    <option value="🐷">🐷 Dwaekki</option>
+                    <option value="🦦">🦦 Jiniret</option>
+                    <option value="🐿️">🐿️ HAN QUOKKA</option>
+                    <option value="🐥">🐥 BbokAri</option>
+                    <option value="🐶">🐶 PuppyM</option>
+                    <option value="🦊">🦊 FoxI.Ny</option>
+
+                </select>
+            </div>
+
+            <button class="primary-btn">
+                Crear mi STAY DAY 💗
+            </button>
+
+        </form>
+
+        <div class="auth-note">
+            Tus datos se guardarán en este navegador.
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     APP
+========================= -->
+
+<div class="app" id="app">
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+        <div class="logo">
+            STAY DAY
+        </div>
+
+        <div class="logo-sub">
+            MY LITTLE UNIVERSE ✦
+        </div>
+
+        <div class="skzoo-mini" id="sidebarSkzoo">
+            🧸
+        </div>
+
+        <nav class="nav">
+
+            <button class="nav-item active" data-page="home">
+                🏠 Home
+            </button>
+
+            <button class="nav-item" data-page="calendar">
+                📅 Calendar
+            </button>
+
+            <button class="nav-item" data-page="habits">
+                🌱 Habits
+            </button>
+
+            <button class="nav-item" data-page="money">
+                💰 Money
+            </button>
+
+            <button class="nav-item" data-page="mood">
+                💭 Mood
+            </button>
+
+            <button class="nav-item" data-page="profile">
+                🧸 Profile
+            </button>
+
+        </nav>
+
+        <div class="sidebar-bottom">
+
+            <button class="logout-btn" onclick="logout()">
+                Cerrar sesión
+            </button>
+
+        </div>
+
+    </aside>
+
+
+    <!-- MAIN -->
+
+    <main class="main">
+
+        <div class="mobile-header">
+            <h1>STAY DAY</h1>
+            <span id="mobileSkzoo">🧸</span>
+        </div>
+
+
+        <!-- =========================
+             HOME
+        ========================= -->
+
+        <section class="page active" id="page-home">
+
+            <div class="topbar">
+
+                <div>
+                    <h1 class="page-title">
+                        Hola, <span id="homeName">STAY</span> 💗
+                    </h1>
+
+                    <p class="page-subtitle" id="todayText">
+                    </p>
+                </div>
+
+                <div class="profile-chip">
+
+                    <div class="avatar" id="topAvatar">
+                        🧸
+                    </div>
+
+                    <strong id="topName">
+                        STAY
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+            <div class="welcome">
+
+                <div class="card welcome-card">
+
+                    <div class="welcome-content">
+
+                        <h2>
+                            Make today a little better ✨
+                        </h2>
+
+                        <p>
+                            Small steps still count.
+                        </p>
+
+                        <div class="level-box">
+
+                            <div class="level-number" id="levelNumber">
+                                1
+                            </div>
+
+                            <div class="level-info">
+
+                                <strong>
+                                    STAY Level <span id="levelText">1</span>
+                                </strong>
+
+                                <div class="xp-bar">
+                                    <div class="xp-progress" id="xpProgress"></div>
+                                </div>
+
+                                <small id="xpText">
+                                    0 / 100 XP
+                                </small>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card companion-card">
+
+                    <small>
+                        YOUR COMPANION
+                    </small>
+
+                    <div class="big-skzoo" id="homeSkzoo">
+                        🧸
+                    </div>
+
+                    <h3 id="homeSkzooName">
+                        SKZOO
+                    </h3>
+
+                    <p>
+                        Always with you ♡
+                    </p>
+
+                </div>
+
+            </div>
+
+
+            <!-- STATS -->
+
+            <div class="stats">
+
+                <div class="card stat-card">
+
+                    <div class="stat-icon">
+                        ⭐
+                    </div>
+
+                    <div>
+                        <div class="stat-number" id="statXp">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            TOTAL XP
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="card stat-card">
+
+                    <div class="stat-icon">
+                        🔥
+                    </div>
+
+                    <div>
+                        <div class="stat-number" id="statStreak">
+                            0
+                        </div>
+
+                        <div class="stat-label">
+                            HABIT STREAK
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="card stat-card">
+
+                    <div class="stat-icon">
+                        💰
+                    </div>
+
+                    <div>
+                        <div class="stat-number" id="statBalance">
+                            $0
+                        </div>
+
+                        <div class="stat-label">
+                            BALANCE
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="card stat-card">
+
+                    <div class="stat-icon">
+                        💭
+                    </div>
+
+                    <div>
+                        <div class="stat-number" id="statMood">
+                            —
+                        </div>
+
+                        <div class="stat-label">
+                            TODAY'S MOOD
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="home-grid">
+
+                <!-- TASKS -->
+
+                <div class="card">
+
+                    <div class="section-title">
+
+                        <h2>
+                            Today's tasks ✦
+                        </h2>
+
+                        <button class="small-btn" onclick="openTaskModal()">
+                            + Add
+                        </button>
+
+                    </div>
+
+                    <div class="task-list" id="homeTasks">
+                    </div>
+
+                </div>
+
+
+                <!-- MOOD -->
+
+                <div class="card">
+
+                    <div class="section-title">
+
+                        <h2>
+                            Today's mood
+                        </h2>
+
+                        <button class="small-btn" onclick="showPage('mood')">
+                            View
+                        </button>
+
+                    </div>
+
+                    <div class="mood-today" id="homeMood">
+
+                        <div class="mood-empty">
+                            You haven't added your mood yet ♡
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             CALENDAR
+        ========================= -->
+
+        <section class="page" id="page-calendar">
+
+            <div class="topbar">
+
+                <div>
+                    <h1 class="page-title">
+                        Calendar 📅
+                    </h1>
+
+                    <p class="page-subtitle">
+                        Organiza tus días.
+                    </p>
+                </div>
+
+                <button class="primary-btn" style="width:auto;padding:11px 18px" onclick="openTaskModal()">
+                    + New task
+                </button>
+
+            </div>
+
+
+            <div class="calendar-layout">
+
+                <div class="card">
+
+                    <div class="calendar-header">
+
+                        <h2 id="calendarMonth">
+                        </h2>
+
+                        <div class="month-buttons">
+
+                            <button onclick="changeMonth(-1)">
+                                ‹
+                            </button>
+
+                            <button onclick="changeMonth(1)">
+                                ›
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                    <div class="weekdays">
+
+                        <div>MON</div>
+                        <div>TUE</div>
+                        <div>WED</div>
+                        <div>THU</div>
+                        <div>FRI</div>
+                        <div>SAT</div>
+                        <div>SUN</div>
+
+                    </div>
+
+                    <div class="calendar-days" id="calendarDays">
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="section-title">
+
+                        <h2>
+                            Upcoming
+                        </h2>
+
+                    </div>
+
+                    <div id="upcomingTasks">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             HABITS
+        ========================= -->
+
+        <section class="page" id="page-habits">
+
+            <div class="topbar">
+
+                <div>
+                    <h1 class="page-title">
+                        Habits 🌱
+                    </h1>
+
+                    <p class="page-subtitle">
+                        Little habits, big changes.
+                    </p>
+                </div>
+
+                <button class="primary-btn" style="width:auto;padding:11px 18px" onclick="openHabitModal()">
+                    + New habit
+                </button>
+
+            </div>
+
+            <div class="habit-list" id="habitList">
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MONEY
+        ========================= -->
+
+        <section class="page" id="page-money">
+
+            <div class="topbar">
+
+                <div>
+                    <h1 class="page-title">
+                        Money 💰
+                    </h1>
+
+                    <p class="page-subtitle">
+                        Take care of your little universe.
+                    </p>
+                </div>
+
+                <button class="primary-btn" style="width:auto;padding:11px 18px" onclick="openMoneyModal()">
+                    + Movement
+                </button>
+
+            </div>
+
+
+            <div class="money-summary">
+
+                <div class="card balance-card">
+
+                    <small>
+                        CURRENT BALANCE
+                    </small>
+
+                    <div class="amount" id="moneyBalance">
+                        $0
+                    </div>
+
+                </div>
+
+
+                <div class="card money-mini">
+
+                    <div class="money-mini-icon">
+                        🌱
+                    </div>
+
+                    <div>
+
+                        <small>
+                            INCOME
+                        </small>
+
+                        <div class="stat-number" id="moneyIncome">
+                            $0
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card money-mini">
+
+                    <div class="money-mini-icon">
+                        🛍️
+                    </div>
+
+                    <div>
+
+                        <small>
+                            EXPENSES
+                        </small>
+
+                        <div class="stat-number" id="moneyExpense">
+                            $0
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <div class="card">
+
+                <div class="section-title">
+
+                    <h2>
+                        Recent movements
+                    </h2>
+
+                </div>
+
+                <div class="transaction-list" id="transactionList">
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             MOOD
+        ========================= -->
+
+        <section class="page" id="page-mood">
+
+            <div class="topbar">
+
+                <div>
+                    <h1 class="page-title">
+                        Mood 💭
+                    </h1>
+
+                    <p class="page-subtitle">
+                        Check in with yourself.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="mood-grid">
+
+                <div class="card">
+
+                    <div class="section-title">
+
+                        <h2>
+                            How are you today?
+                        </h2>
+
+                    </div>
+
+                    <div class="mood-options">
+
+                        <button class="mood-option" data-mood="Happy" data-emoji="😄">
+                            <span class="emoji">😄</span>
+                            <span>Happy</span>
+                        </button>
+
+                        <button class="mood-option" data-mood="Good" data-emoji="😊">
+                            <span class="emoji">😊</span>
+                            <span>Good</span>
+                        </button>
+
+                        <button class="mood-option" data-mood="Okay" data-emoji="😐">
+                            <span class="emoji">😐</span>
+                            <span>Okay</span>
+                        </button>
+
+                        <button class="mood-option" data-mood="Sad" data-emoji="😔">
+                            <span class="emoji">😔</span>
+                            <span>Sad</span>
+                        </button>
+
+                        <button class="mood-option" data-mood="Stressed" data-emoji="😫">
+                            <span class="emoji">😫</span>
+                            <span>Stressed</span>
+                        </button>
+
+                        <button class="mood-option" data-mood="Tired" data-emoji="😴">
+                            <span class="emoji">😴</span>
+                            <span>Tired</span>
+                        </button>
+
+                        <button class="mood-option" data-mood="Angry" data-emoji="😡">
+                            <span class="emoji">😡</span>
+                            <span>Angry</span>
+                        </button>
+
+                        <button class="mood-option" data-mood="Excited" data-emoji="🥰">
+                            <span class="emoji">🥰</span>
+                            <span>Excited</span>
+                        </button>
+
+                    </div>
+
+
+                    <div class="mood-note">
+
+                        <div class="form-group">
+
+                            <label>
+                                ¿Quieres escribir algo?
+                            </label>
+
+                            <textarea id="moodNote" placeholder="Escribe cómo te sientes..."></textarea>
+
+                        </div>
+
+                        <button class="primary-btn" onclick="saveMood()">
+                            Save today's mood 💗
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="section-title">
+
+                        <h2>
+                            Mood history
+                        </h2>
+
+                    </div>
+
+                    <div class="mood-history" id="moodHistory">
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =========================
+             PROFILE
+        ========================= -->
+
+        <section class="page" id="page-profile">
+
+            <div class="topbar">
+
+                <div>
+                    <h1 class="page-title">
+                        Your profile 🧸
+                    </h1>
+
+                    <p class="page-subtitle">
+                        Your little STAY universe.
+                    </p>
+                </div>
+
+            </div>
+
+
+            <div class="profile-layout">
+
+                <div class="card profile-card">
+
+                    <div class="profile-avatar" id="profileAvatar">
+                        🧸
+                    </div>
+
+                    <h2 id="profileName">
+                        STAY
+                    </h2>
+
+                    <p id="profileUsername">
+                        @stay
+                    </p>
+
+                    <div style="margin-top:20px">
+
+                        <strong>
+                            Level <span id="profileLevel">1</span>
+                        </strong>
+
+                        <div class="xp-bar" style="margin-top:8px;background:#EEE9ED">
+                            <div class="xp-progress" id="profileXpProgress"></div>
+                        </div>
+
+                        <small id="profileXpText">
+                            0 XP
+                        </small>
+
+                    </div>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="section-title">
+
+                        <h2>
+                            Choose your SKZOO
+                        </h2>
+
+                    </div>
+
+                    <div class="skzoo-grid">
+
+                        <button class="skzoo-option" data-skzoo="🐺" data-name="Wolf Chan">
+                            <span class="emoji">🐺</span>
+                            <strong>Wolf Chan</strong>
+                        </button>
+
+                        <button class="skzoo-option" data-skzoo="🐰" data-name="Leebit">
+                            <span class="emoji">🐰</span>
+                            <strong>Leebit</strong>
+                        </button>
+
+                        <button class="skzoo-option" data-skzoo="🐷" data-name="Dwaekki">
+                            <span class="emoji">🐷</span>
+                            <strong>Dwaekki</strong>
+                        </button>
+
+                        <button class="skzoo-option" data-skzoo="🦦" data-name="Jiniret">
+                            <span class="emoji">🦦</span>
+                            <strong>Jiniret</strong>
+                        </button>
+
+                        <button class="skzoo-option" data-skzoo="🐿️" data-name="HAN QUOKKA">
+                            <span class="emoji">🐿️</span>
+                            <strong>HAN QUOKKA</strong>
+                        </button>
+
+                        <button class="skzoo-option" data-skzoo="🐥" data-name="BbokAri">
+                            <span class="emoji">🐥</span>
+                            <strong>BbokAri</strong>
+                        </button>
+
+                        <button class="skzoo-option" data-skzoo="🐶" data-name="PuppyM">
+                            <span class="emoji">🐶</span>
+                            <strong>PuppyM</strong>
+                        </button>
+
+                        <button class="skzoo-option" data-skzoo="🦊" data-name="FoxI.Ny">
+                            <span class="emoji">🦊</span>
+                            <strong>FoxI.Ny</strong>
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MOBILE NAV -->
+
+    <nav class="bottom-nav">
+
+        <button class="active" data-page="home">
+            <span>🏠</span>
+            Home
+        </button>
+
+        <button data-page="calendar">
+            <span>📅</span>
+            Calendar
+        </button>
+
+        <button data-page="habits">
+            <span>🌱</span>
+            Habits
+        </button>
+
+        <button data-page="money">
+            <span>💰</span>
+            Money
+        </button>
+
+        <button data-page="mood">
+            <span>💭</span>
+            Mood
+        </button>
+
+        <button data-page="profile">
+            <span>🧸</span>
+            Me
+        </button>
+
+    </nav>
+
+</div>
+
+
+<!-- =========================
+     MODAL
+========================= -->
+
+<div class="modal" id="modal">
+
+    <div class="modal-box">
+
+        <div class="modal-header">
+
+            <h2 id="modalTitle">
+                Add
+            </h2>
+
+            <button class="close-modal" onclick="closeModal()">
+                ×
+            </button>
+
+        </div>
+
+        <div id="modalContent">
+        </div>
+
+    </div>
+
+</div>
+
+
+<div class="toast" id="toast">
+    Saved ✨
+</div>
+
+
+<script>
+
+/* =========================================
+   STORAGE
+========================================= */
+
+const STORAGE_KEY = "stay_day_accounts_v2";
+const SESSION_KEY = "stay_day_session_v2";
+
+let accounts = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
+let currentUser = localStorage.getItem(SESSION_KEY);
+
+let calendarDate = new Date();
+let selectedMood = null;
+
+
+/* =========================================
+   HELPERS
+========================================= */
+
+function saveAccounts(){
+
+    localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(accounts)
+    );
+
+}
+
+function user(){
+
+    return accounts[currentUser];
+
+}
+
+function todayKey(){
+
+    const d = new Date();
+
+    return d.getFullYear() + "-" +
+        String(d.getMonth()+1).padStart(2,"0") + "-" +
+        String(d.getDate()).padStart(2,"0");
+
+}
+
+function formatMoney(value){
+
+    return "$" + Number(value || 0).toLocaleString("es-CO");
+
+}
+
+function showToast(message){
+
+    const toast = document.getElementById("toast");
+
+    toast.textContent = message;
+    toast.classList.add("show");
+
+    setTimeout(()=>{
+        toast.classList.remove("show");
+    },2200);
+
+}
+
+
+/* =========================================
+   AUTH
+========================================= */
+
+function switchAuth(type){
+
+    const loginForm = document.getElementById("loginForm");
+    const registerForm = document.getElementById("registerForm");
+
+    const loginTab = document.getElementById("loginTab");
+    const registerTab = document.getElementById("registerTab");
+
+    if(type === "login"){
+
+        loginForm.style.display = "block";
+        registerForm.style.display = "none";
+
+        loginTab.classList.add("active");
+        registerTab.classList.remove("active");
+
+    }else{
+
+        loginForm.style.display = "none";
+        registerForm.style.display = "block";
+
+        loginTab.classList.remove("active");
+        registerTab.classList.add("active");
+
+    }
+
+}
+
+
+document.getElementById("registerForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    const name = document.getElementById("registerName").value.trim();
+    const username = document.getElementById("registerUser").value.trim().toLowerCase();
+    const password = document.getElementById("registerPassword").value;
+    const skzoo = document.getElementById("registerSkzoo").value;
+
+    if(accounts[username]){
+
+        showToast("Ese usuario ya existe 💭");
+        return;
+
+    }
+
+    accounts[username] = {
+
+        name,
+        username,
+        password,
+        skzoo,
+        skzooName:"",
+        xp:0,
+
+        tasks:[],
+
+        habits:[
+
+            {
+                id:Date.now(),
+                name:"Tomar agua",
+                icon:"💧",
+                completed:[]
+            },
+
+            {
+                id:Date.now()+1,
+                name:"Estudiar",
+                icon:"📚",
+                completed:[]
+            }
+
+        ],
+
+        transactions:[],
+
+        moods:[]
+
+    };
+
+    saveAccounts();
+
+    currentUser = username;
+
+    localStorage.setItem(
+        SESSION_KEY,
+        username
+    );
+
+    enterApp();
+
+});
+
+
+document.getElementById("loginForm").addEventListener("submit",function(e){
+
+    e.preventDefault();
+
+    const username = document.getElementById("loginUser").value.trim().toLowerCase();
+    const password = document.getElementById("loginPassword").value;
+
+    if(!accounts[username]){
+
+        showToast("Usuario no encontrado 💭");
+        return;
+
+    }
+
+    if(accounts[username].password !== password){
+
+        showToast("Contraseña incorrecta 💭");
+        return;
+
+    }
+
+    currentUser = username;
+
+    localStorage.setItem(
+        SESSION_KEY,
+        username
+    );
+
+    enterApp();
+
+});
+
+
+function enterApp(){
+
+    document.getElementById("authScreen").style.display = "none";
+    document.getElementById("app").style.display = "block";
+
+    renderAll();
+
+}
+
+
+function logout(){
+
+    localStorage.removeItem(SESSION_KEY);
+
+    currentUser = null;
+
+    document.getElementById("app").style.display = "none";
+    document.getElementById("authScreen").style.display = "flex";
+
+    document.getElementById("loginForm").reset();
+
+}
+
+
+/* =========================================
+   NAVIGATION
+========================================= */
+
+document.querySelectorAll("[data-page]").forEach(btn=>{
+
+    btn.addEventListener("click",()=>{
+
+        showPage(btn.dataset.page);
+
+    });
+
+});
+
+
+function showPage(page){
+
+    document.querySelectorAll(".page").forEach(p=>{
+        p.classList.remove("active");
+    });
+
+    document
+        .getElementById("page-"+page)
+        .classList.add("active");
+
+    document.querySelectorAll("[data-page]").forEach(btn=>{
+        btn.classList.toggle(
+            "active",
+            btn.dataset.page === page
+        );
+    });
+
+    if(page === "calendar") renderCalendar();
+
+}
+
+
+/* =========================================
+   XP
+========================================= */
+
+function addXP(amount){
+
+    user().xp += amount;
+
+    saveAccounts();
+
+    renderAll();
+
+}
+
+
+function getLevel(){
+
+    return Math.floor(user().xp / 100) + 1;
+
+}
+
+function getLevelXP(){
+
+    return user().xp % 100;
+
+}
+
+
+/* =========================================
+   HOME
+========================================= */
+
+function renderHome(){
+
+    const u = user();
+
+    document.getElementById("homeName").textContent = u.name;
+    document.getElementById("topName").textContent = u.name;
+
+    document.getElementById("topAvatar").textContent = u.skzoo;
+
+    document.getElementById("mobileSkzoo").textContent = u.skzoo;
+    document.getElementById("sidebarSkzoo").textContent = u.skzoo;
+
+    document.getElementById("homeSkzoo").textContent = u.skzoo;
+
+    document.getElementById("homeSkzooName").textContent =
+        u.skzooName || "SKZOO";
+
+    const date = new Date();
+
+    document.getElementById("todayText").textContent =
+        date.toLocaleDateString("es-CO",{
+            weekday:"long",
+            day:"numeric",
+            month:"long"
+        });
+
+    const level = getLevel();
+
+    document.getElementById("levelNumber").textContent = level;
+    document.getElementById("levelText").textContent = level;
+
+    document.getElementById("xpText").textContent =
+        getLevelXP() + " / 100 XP";
+
+    document.getElementById("xpProgress").style.width =
+        getLevelXP() + "%";
+
+    document.getElementById("statXp").textContent =
+        user().xp;
+
+    document.getElementById("statStreak").textContent =
+        calculateStreak();
+
+    const balance = calculateBalance();
+
+    document.getElementById("statBalance").textContent =
+        formatMoney(balance);
+
+    renderTasks();
+
+    renderTodayMood();
+
+}
+
+
+/* =========================================
+   TASKS
+========================================= */
+
+function renderTasks(){
+
+    const container = document.getElementById("homeTasks");
+
+    const today = todayKey();
+
+    const tasks = user().tasks.filter(t=>t.date === today);
+
+    container.innerHTML = "";
+
+    if(!tasks.length){
+
+        container.innerHTML = `
+            <div style="text-align:center;padding:25px;color:#858189;font-weight:800">
+                No tasks for today ♡
+            </div>
+        `;
+
+        return;
+
+    }
+
+    tasks.forEach(task=>{
+
+        const div = document.createElement("div");
+
+        div.className =
+            "task " +
+            (task.completed ? "completed" : "");
+
+        div.innerHTML = `
+
+            <button
+                class="task-check"
+                onclick="toggleTask(${task.id})"
+            >
+                ${task.completed ? "✓" : ""}
+            </button>
+
+            <div class="task-title">
+                ${escapeHTML(task.title)}
+            </div>
+
+            <div class="priority ${task.priority}">
+            </div>
+
+        `;
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+function toggleTask(id){
+
+    const task = user().tasks.find(t=>t.id === id);
+
+    if(!task) return;
+
+    if(!task.completed){
+
+        task.completed = true;
+
+        user().xp += 10;
+
+        showToast("+10 XP ✨");
+
+    }else{
+
+        task.completed = false;
+
+    }
+
+    saveAccounts();
+
+    renderAll();
+
+}
+
+
+function openTaskModal(){
+
+    document.getElementById("modalTitle").textContent =
+        "New task ✦";
+
+    document.getElementById("modalContent").innerHTML = `
+
+        <div class="form-group">
+
+            <label>Task</label>
+
+            <input id="taskTitle" placeholder="Ej. Entregar trabajo">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Date</label>
+
+            <input id="taskDate" type="date" value="${todayKey()}">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Priority</label>
+
+            <select id="taskPriority">
+
+                <option value="low">Low</option>
+                <option value="medium" selected>Medium</option>
+                <option value="high">High</option>
+
+            </select>
+
+        </div>
+
+        <button class="primary-btn" onclick="saveTask()">
+            Add task ✨
+        </button>
+
+    `;
+
+    document.getElementById("modal").classList.add("show");
+
+}
+
+
+function saveTask(){
+
+    const title = document.getElementById("taskTitle").value.trim();
+
+    if(!title){
+
+        showToast("Escribe una tarea 💭");
+        return;
+
+    }
+
+    user().tasks.push({
+
+        id:Date.now(),
+        title,
+        date:document.getElementById("taskDate").value,
+        priority:document.getElementById("taskPriority").value,
+        completed:false
+
+    });
+
+    user().xp += 5;
+
+    saveAccounts();
+
+    closeModal();
+
+    renderAll();
+
+    showToast("Task added +5 XP ✨");
+
+}
+
+
+/* =========================================
+   CALENDAR
+========================================= */
+
+function renderCalendar(){
+
+    const year = calendarDate.getFullYear();
+    const month = calendarDate.getMonth();
+
+    document.getElementById("calendarMonth").textContent =
+        calendarDate.toLocaleDateString("es-CO",{
+            month:"long",
+            year:"numeric"
+        });
+
+    const container = document.getElementById("calendarDays");
+
+    container.innerHTML = "";
+
+    const firstDay = new Date(year,month,1);
+
+    let startDay = firstDay.getDay();
+
+    if(startDay === 0) startDay = 7;
+
+    const daysInMonth =
+        new Date(year,month+1,0).getDate();
+
+    const prevDays =
+        new Date(year,month,0).getDate();
+
+    for(let i=1;i<=42;i++){
+
+        let dayNumber;
+        let date;
+        let other = false;
+
+        if(i < startDay){
+
+            dayNumber =
+                prevDays - startDay + i + 1;
+
+            date =
+                new Date(year,month-1,dayNumber);
+
+            other = true;
+
+        }else if(i >= startDay + daysInMonth){
+
+            dayNumber =
+                i - (startDay + daysInMonth) + 1;
+
+            date =
+                new Date(year,month+1,dayNumber);
+
+            other = true;
+
+        }else{
+
+            dayNumber =
+                i - startDay + 1;
+
+            date =
+                new Date(year,month,dayNumber);
+
+        }
+
+        const key =
+            date.getFullYear() + "-" +
+            String(date.getMonth()+1).padStart(2,"0") + "-" +
+            String(date.getDate()).padStart(2,"0");
+
+        const isToday = key === todayKey();
+
+        const div = document.createElement("div");
+
+        div.className =
+            "day " +
+            (other ? "other " : "") +
+            (isToday ? "today" : "");
+
+        div.innerHTML = `
+            <div class="day-number">
+                ${dayNumber}
+            </div>
+        `;
+
+        user().tasks
+            .filter(t=>t.date === key)
+            .slice(0,2)
+            .forEach(task=>{
+
+                const taskDiv = document.createElement("div");
+
+                taskDiv.className = "day-task";
+
+                taskDiv.textContent = task.title;
+
+                div.appendChild(taskDiv);
+
+            });
+
+        container.appendChild(div);
+
+    }
+
+    renderUpcoming();
+
+}
+
+
+function changeMonth(amount){
+
+    calendarDate.setMonth(
+        calendarDate.getMonth() + amount
+    );
+
+    renderCalendar();
+
+}
+
+
+function renderUpcoming(){
+
+    const container =
+        document.getElementById("upcomingTasks");
+
+    const tasks =
+        [...user().tasks]
+        .filter(t=>!t.completed)
+        .sort((a,b)=>a.date.localeCompare(b.date))
+        .slice(0,8);
+
+    container.innerHTML = "";
+
+    if(!tasks.length){
+
+        container.innerHTML =
+            `<p style="color:#858189;font-weight:800">
+                No upcoming tasks ♡
+            </p>`;
+
+        return;
+
+    }
+
+    tasks.forEach(task=>{
+
+        const div = document.createElement("div");
+
+        div.style.cssText =
+            "padding:11px;margin-bottom:8px;background:#FAF8F7;border-radius:13px";
+
+        div.innerHTML = `
+
+            <strong style="font-family:Fredoka">
+                ${escapeHTML(task.title)}
+            </strong>
+
+            <br>
+
+            <small style="color:#858189;font-weight:700">
+                ${task.date}
+            </small>
+
+        `;
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================================
+   HABITS
+========================================= */
+
+function renderHabits(){
+
+    const container =
+        document.getElementById("habitList");
+
+    container.innerHTML = "";
+
+    user().habits.forEach(habit=>{
+
+        const done =
+            habit.completed.includes(todayKey());
+
+        const streak =
+            calculateHabitStreak(habit);
+
+        const div = document.createElement("div");
+
+        div.className = "card habit-card";
+
+        div.innerHTML = `
+
+            <div class="habit-top">
+
+                <div class="habit-icon">
+                    ${habit.icon}
+                </div>
+
+            </div>
+
+            <div class="habit-name">
+                ${escapeHTML(habit.name)}
+            </div>
+
+            <div class="habit-streak">
+                🔥 ${streak} day streak
+            </div>
+
+            <div class="habit-days">
+
+                ${getLastSevenDays()
+                    .map(day=>{
+
+                        const isDone =
+                            habit.completed.includes(day.key);
+
+                        return `
+                            <div class="habit-day ${isDone ? "done":""}">
+                                ${day.label}
+                            </div>
+                        `;
+
+                    })
+                    .join("")}
+
+            </div>
+
+            <button
+                class="habit-complete ${done ? "done":""}"
+                onclick="toggleHabit(${habit.id})"
+            >
+
+                ${done ? "✓ Completed today" : "Complete today"}
+
+            </button>
+
+        `;
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+function getLastSevenDays(){
+
+    const arr = [];
+
+    for(let i=6;i>=0;i--){
+
+        const d = new Date();
+
+        d.setDate(d.getDate()-i);
+
+        arr.push({
+
+            key:
+                d.getFullYear()+"-"+
+                String(d.getMonth()+1).padStart(2,"0")+"-"+
+                String(d.getDate()).padStart(2,"0"),
+
+            label:
+                d.toLocaleDateString("en-US",{
+                    weekday:"narrow"
+                })
+
+        });
+
+    }
+
+    return arr;
+
+}
+
+
+function calculateHabitStreak(habit){
+
+    let streak = 0;
+
+    const d = new Date();
+
+    while(true){
+
+        const key =
+            d.getFullYear()+"-"+
+            String(d.getMonth()+1).padStart(2,"0")+"-"+
+            String(d.getDate()).padStart(2,"0");
+
+        if(habit.completed.includes(key)){
+
+            streak++;
+            d.setDate(d.getDate()-1);
+
+        }else{
+
+            break;
+
+        }
+
+    }
+
+    return streak;
+
+}
+
+
+function calculateStreak(){
+
+    if(!user().habits.length) return 0;
+
+    return Math.max(
+        ...user().habits.map(calculateHabitStreak)
+    );
+
+}
+
+
+function toggleHabit(id){
+
+    const habit =
+        user().habits.find(h=>h.id === id);
+
+    const today = todayKey();
+
+    const index =
+        habit.completed.indexOf(today);
+
+    if(index === -1){
+
+        habit.completed.push(today);
+
+        user().xp += 15;
+
+        showToast("+15 XP 🌱");
+
+    }else{
+
+        habit.completed.splice(index,1);
+
+    }
+
+    saveAccounts();
+
+    renderAll();
+
+}
+
+
+function openHabitModal(){
+
+    document.getElementById("modalTitle").textContent =
+        "New habit 🌱";
+
+    document.getElementById("modalContent").innerHTML = `
+
+        <div class="form-group">
+
+            <label>Habit name</label>
+
+            <input id="habitName" placeholder="Ej. Leer 20 minutos">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Icon</label>
+
+            <select id="habitIcon">
+
+                <option>🌱</option>
+                <option>💧</option>
+                <option>📚</option>
+                <option>🏃</option>
+                <option>🧘</option>
+                <option>🎨</option>
+                <option>🎵</option>
+                <option>😴</option>
+                <option>🍎</option>
+
+            </select>
+
+        </div>
+
+        <button class="primary-btn" onclick="saveHabit()">
+            Create habit ✨
+        </button>
+
+    `;
+
+    document.getElementById("modal").classList.add("show");
+
+}
+
+
+function saveHabit(){
+
+    const name =
+        document.getElementById("habitName").value.trim();
+
+    if(!name){
+
+        showToast("Escribe el hábito 💭");
+        return;
+
+    }
+
+    user().habits.push({
+
+        id:Date.now(),
+        name,
+        icon:document.getElementById("habitIcon").value,
+        completed:[]
+
+    });
+
+    saveAccounts();
+
+    closeModal();
+
+    renderAll();
+
+    showToast("Habit created 🌱");
+
+}
+
+
+/* =========================================
+   MONEY
+========================================= */
+
+function calculateBalance(){
+
+    return user().transactions.reduce(
+        (total,t)=>{
+
+            return total +
+                (t.type === "income"
+                    ? Number(t.amount)
+                    : -Number(t.amount));
+
+        },0
+    );
+
+}
+
+
+function calculateIncome(){
+
+    return user().transactions
+        .filter(t=>t.type==="income")
+        .reduce((a,b)=>a+Number(b.amount),0);
+
+}
+
+
+function calculateExpenses(){
+
+    return user().transactions
+        .filter(t=>t.type==="expense")
+        .reduce((a,b)=>a+Number(b.amount),0);
+
+}
+
+
+function renderMoney(){
+
+    document.getElementById("moneyBalance").textContent =
+        formatMoney(calculateBalance());
+
+    document.getElementById("moneyIncome").textContent =
+        formatMoney(calculateIncome());
+
+    document.getElementById("moneyExpense").textContent =
+        formatMoney(calculateExpenses());
+
+    const container =
+        document.getElementById("transactionList");
+
+    container.innerHTML = "";
+
+    const transactions =
+        [...user().transactions]
+        .sort((a,b)=>b.created-a.created);
+
+    if(!transactions.length){
+
+        container.innerHTML = `
+            <div style="text-align:center;padding:30px;color:#858189;font-weight:800">
+                No movements yet ♡
+            </div>
+        `;
+
+        return;
+
+    }
+
+    transactions.forEach(t=>{
+
+        const div = document.createElement("div");
+
+        div.className = "transaction";
+
+        div.innerHTML = `
+
+            <div class="transaction-icon">
+                ${t.type==="income" ? "🌱":"🛍️"}
+            </div>
+
+            <div class="transaction-info">
+
+                <strong>
+                    ${escapeHTML(t.title)}
+                </strong>
+
+                <small>
+                    ${escapeHTML(t.category)} · ${t.date}
+                </small>
+
+            </div>
+
+            <div class="transaction-amount ${t.type}">
+                ${t.type==="income" ? "+" : "-"}
+                ${formatMoney(t.amount)}
+            </div>
+
+        `;
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+function openMoneyModal(){
+
+    document.getElementById("modalTitle").textContent =
+        "Money movement 💰";
+
+    document.getElementById("modalContent").innerHTML = `
+
+        <div class="form-group">
+
+            <label>Type</label>
+
+            <select id="moneyType">
+
+                <option value="expense">
+                    Expense
+                </option>
+
+                <option value="income">
+                    Income
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Description</label>
+
+            <input id="moneyTitle" placeholder="Ej. Almuerzo">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Amount</label>
+
+            <input id="moneyAmount" type="number" min="0" placeholder="0">
+
+        </div>
+
+        <div class="form-group">
+
+            <label>Category</label>
+
+            <select id="moneyCategory">
+
+                <option>Food</option>
+                <option>University</option>
+                <option>Transport</option>
+                <option>Shopping</option>
+                <option>Personal</option>
+                <option>Entertainment</option>
+                <option>Home</option>
+                <option>Other</option>
+
+            </select>
+
+        </div>
+
+        <button class="primary-btn" onclick="saveMoney()">
+            Save movement ✨
+        </button>
+
+    `;
+
+    document.getElementById("modal").classList.add("show");
+
+}
+
+
+function saveMoney(){
+
+    const title =
+        document.getElementById("moneyTitle").value.trim();
+
+    const amount =
+        Number(document.getElementById("moneyAmount").value);
+
+    if(!title || !amount){
+
+        showToast("Completa los datos 💭");
+        return;
+
+    }
+
+    user().transactions.push({
+
+        id:Date.now(),
+        type:document.getElementById("moneyType").value,
+        title,
+        amount,
+        category:document.getElementById("moneyCategory").value,
+        date:todayKey(),
+        created:Date.now()
+
+    });
+
+    user().xp += 5;
+
+    saveAccounts();
+
+    closeModal();
+
+    renderAll();
+
+    showToast("+5 XP 💰");
+
+}
+
+
+/* =========================================
+   MOOD
+========================================= */
+
+document.querySelectorAll(".mood-option").forEach(button=>{
+
+    button.addEventListener("click",()=>{
+
+        document.querySelectorAll(".mood-option")
+            .forEach(b=>b.classList.remove("selected"));
+
+        button.classList.add("selected");
+
+        selectedMood = {
+
+            mood:button.dataset.mood,
+            emoji:button.dataset.emoji
+
+        };
+
+    });
+
+});
+
+
+function saveMood(){
+
+    if(!selectedMood){
+
+        showToast("Elige un mood primero 💭");
+        return;
+
+    }
+
+    const today = todayKey();
+
+    const existing =
+        user().moods.find(m=>m.date===today);
+
+    const moodData = {
+
+        date:today,
+        mood:selectedMood.mood,
+        emoji:selectedMood.emoji,
+        note:document.getElementById("moodNote").value.trim()
+
+    };
+
+    if(existing){
+
+        Object.assign(existing,moodData);
+
+    }else{
+
+        user().moods.push(moodData);
+
+        user().xp += 5;
+
+    }
+
+    saveAccounts();
+
+    renderAll();
+
+    showToast("Mood saved +5 XP 💗");
+
+}
+
+
+function renderTodayMood(){
+
+    const today =
+        user().moods.find(m=>m.date===todayKey());
+
+    const container =
+        document.getElementById("homeMood");
+
+    const stat =
+        document.getElementById("statMood");
+
+    if(!today){
+
+        container.innerHTML = `
+            <div class="mood-empty">
+                You haven't added your mood yet ♡
+            </div>
+        `;
+
+        stat.textContent = "—";
+
+        return;
+
+    }
+
+    container.innerHTML = `
+
+        <div class="mood-face">
+            ${today.emoji}
+        </div>
+
+        <div class="mood-name">
+            ${today.mood}
+        </div>
+
+        ${
+            today.note
+            ? `<p style="color:#858189;font-size:12px;margin-top:7px">
+                "${escapeHTML(today.note)}"
+               </p>`
+            : ""
+        }
+
+    `;
+
+    stat.textContent = today.emoji;
+
+}
+
+
+function renderMoodHistory(){
+
+    const container =
+        document.getElementById("moodHistory");
+
+    container.innerHTML = "";
+
+    const moods =
+        [...user().moods]
+        .sort((a,b)=>b.date.localeCompare(a.date));
+
+    if(!moods.length){
+
+        container.innerHTML = `
+            <div style="text-align:center;padding:25px;color:#858189;font-weight:800">
+                Your mood history will appear here ♡
+            </div>
+        `;
+
+        return;
+
+    }
+
+    moods.forEach(m=>{
+
+        const div = document.createElement("div");
+
+        div.className = "mood-history-item";
+
+        div.innerHTML = `
+
+            <div class="emoji">
+                ${m.emoji}
+            </div>
+
+            <div>
+
+                <strong>
+                    ${m.mood}
+                </strong>
+
+                <small>
+                    ${m.date}
+                </small>
+
+                ${
+                    m.note
+                    ? `<small>"${escapeHTML(m.note)}"</small>`
+                    : ""
+                }
+
+            </div>
+
+        `;
+
+        container.appendChild(div);
+
+    });
+
+}
+
+
+/* =========================================
+   PROFILE
+========================================= */
+
+function renderProfile(){
+
+    const u = user();
+
+    document.getElementById("profileAvatar").textContent =
+        u.skzoo;
+
+    document.getElementById("profileName").textContent =
+        u.name;
+
+    document.getElementById("profileUsername").textContent =
+        "@" + u.username;
+
+    document.getElementById("profileLevel").textContent =
+        getLevel();
+
+    document.getElementById("profileXpText").textContent =
+        user().xp + " XP";
+
+    document.getElementById("profileXpProgress").style.width =
+        getLevelXP() + "%";
+
+    document.querySelectorAll(".skzoo-option").forEach(option=>{
+
+        option.classList.toggle(
+            "selected",
+            option.dataset.skzoo === u.skzoo
+        );
+
+    });
+
+}
+
+
+document.querySelectorAll(".skzoo-option").forEach(option=>{
+
+    option.addEventListener("click",()=>{
+
+        user().skzoo =
+            option.dataset.skzoo;
+
+        user().skzooName =
+            option.dataset.name;
+
+        saveAccounts();
+
+        renderAll();
+
+        showToast(
+            option.dataset.name + " is now your companion 🧸"
+        );
+
+    });
+
+});
+
+
+/* =========================================
+   MODAL
+========================================= */
+
+function closeModal(){
+
+    document.getElementById("modal")
+        .classList.remove("show");
+
+}
+
+
+/* =========================================
+   RENDER EVERYTHING
+========================================= */
+
+function renderAll(){
+
+    if(!currentUser || !user()) return;
+
+    renderHome();
+    renderHabits();
+    renderMoney();
+    renderMoodHistory();
+    renderProfile();
+
+    if(
+        document
+        .getElementById("page-calendar")
+        .classList.contains("active")
+    ){
+
+        renderCalendar();
+
+    }
+
+}
+
+
+/* =========================================
+   SECURITY / HTML
+========================================= */
+
+function escapeHTML(value){
+
+    return String(value)
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+
+}
+
+
+/* =========================================
+   AUTO LOGIN
+========================================= */
+
+if(currentUser && accounts[currentUser]){
+
+    enterApp();
+
+}
+
+</script>
+
+</body>
+</html>
